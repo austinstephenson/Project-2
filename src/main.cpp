@@ -10,6 +10,7 @@ int main() {
     string line;
     while (true) {
         //Main menu
+        cout << endl;
         cout << "Welcome To the Senior Fall-Risk Predictor!" << endl << endl;
         cout << "Please select an option:" << endl << endl;
         cout << "1. Load patient data from file" << endl;
@@ -29,7 +30,7 @@ int main() {
 
         if (line == "1") {
             //Load Patient data function
-            break;
+
         }
 
         istringstream inStream(line);
@@ -95,10 +96,9 @@ int main() {
         }
 
 
-        return 0;
-
 
     }
+    return 0;
 }
 
 
