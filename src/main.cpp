@@ -109,6 +109,6 @@ int main() {
 
 
     }
-    cout << "Thank you for using the Senior Fall-Risk Predictor!" ;
+    cout << "Thank you for using the Senior Fall-Risk Predictor!" << endl ;
     return 0;
 }
