@@ -31,13 +31,20 @@ class HTQuadratic {
     private:
     int size;
     int capacity;
-    double lf;
+    Entry* table;
+
+    int hash(const string& key) const;
+    int probeHash(int index, int i) const;
 
 
 
 public:
     HTQuadratic();
+    ~HTQuadratic();
 
+    Patient* search(string id);
 
+    bool insert(Patient& newPatient);
+    bool remove(string& id);
 
 };
