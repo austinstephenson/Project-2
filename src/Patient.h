@@ -55,17 +55,17 @@ private:
 
     // get functions
 
-    int getAge;
-    char getSex;
-    double getHeight;
-    double getWeight;
-    int getFalls;
-    int getMedCount;
-    bool getRiskyMedUse;
-    double getTugTime;
-    double getMobilityScore;
-    double getRiskScore;
-    string getRiskLevel;
+    int getAge();
+    char getSex();
+    double getHeight();
+    double getWeight();
+    int getFalls();
+    int getMedCount();
+    bool getRiskyMedUse();
+    double getTugTime();
+    double getMobilityScore();
+    double getRiskScore();
+    string getRiskLevel();
 
     //setters
 
