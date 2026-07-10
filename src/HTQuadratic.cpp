@@ -46,7 +46,7 @@ int HTQuadratic::probeHash(const int index, int i) const {
 //Add Patient
 
 bool HTQuadratic::insert(Patient &newPatient) {
-    string key=newPatient.getpatientid();
+    string key=newPatient.getId();
 
     //generate hash
     int hashcode=hash(key);
@@ -54,10 +54,10 @@ bool HTQuadratic::insert(Patient &newPatient) {
     for (int i=0;i<capacity;i++) {
 
         //check if available
-        int index=probeHash(hashcode,i);
-
+        int index =probeHash(hashcode,i);
         if (!table[index].occupied||table[index].deleted) {
 
+            table[index].patient=newPatient;
             table[index].occupied=true;
             table[index].deleted=false;
             size++;
@@ -65,7 +65,7 @@ bool HTQuadratic::insert(Patient &newPatient) {
             return true;
         }
 
-        if (table[index].patient.getID()=key) {
+        if (table[index].patient.getId()==key) {
             return false;
         }
 
@@ -77,18 +77,35 @@ bool HTQuadratic::insert(Patient &newPatient) {
 }
 
 //patient search function
-/*
-Patient* HTQuadratic::search(string id) {
 
-    int index=hash(id);
+Patient* HTQuadratic::search(const string id) {
+
+
+    int hashcode=hash(id);
 
     for (int i=0;i<capacity;i++) {
 
-        return nullptr;
+        int index=probeHash(hashcode,i);
+
+        if (!table[index].occupied and !table[index].deleted) {
+
+            return nullptr;
+        }
+
+        if (table[index].occupied and table[index].patient.getId()==id) {
+            return &table[index].patient;
+        }
+
 
 
     }
     return nullptr;
 };
 
-*/
+
+//Destructitotiononator
+
+HTQuadratic::~HTQuadratic() {
+    delete[] table;
+
+}
