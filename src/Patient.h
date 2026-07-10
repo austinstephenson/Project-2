@@ -89,7 +89,7 @@ private:
     void calcRiskScore();
     void calcRiskLevel();
 
-    void updateRiskAssesment;
+    void updateRiskAssesment();
 
     bool isHighRisk() const;
 
