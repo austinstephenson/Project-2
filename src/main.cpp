@@ -2,27 +2,25 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "UIface.h"
 
 using namespace std;
 
 
 int main() {
+
+    UIface run;
+    run.running=true;
+
+
     cout << endl;
     cout << "Welcome To the Senior Fall-Risk Predictor!" << endl;
     string line;
-    while (true) {
+
+
+    while (run.running) {
         //Main menu
-        cout << endl;
-        cout<< "MAIN MENU";
-        cout << endl;
-        cout << "1. Load patient data from file" << endl;
-        cout << "2. Add new patient record" << endl;
-        cout << "3. Search patient by ID" << endl;
-        cout << "4. Update patient information" << endl;
-        cout << "5. Remove patient record" << endl;
-        cout << "6. Show top x highest-risk patients" << endl;
-        cout << "7. Save data to file" << endl;
-        cout << "8. Exit" << endl << endl;
+        run.runMenu();
 
 
         //option selection
@@ -36,6 +34,8 @@ int main() {
         if (line == "1") {
             //Load Patient data function
             cout << "Loading Patient data..."<< endl;
+
+            run.load();
 
             cout <<"Load Successful" <<endl;
 
@@ -51,6 +51,7 @@ int main() {
             //
             // inStream >> ufid;
             // //tree.insert(name, ufid);
+            run.addPro();
             cout << "Record inserted!" <<endl;
         }
 
@@ -68,9 +69,12 @@ int main() {
             // }
 
             // tree.search(arg);
+            run.sID();
             cout << "Patient found!" << endl;
         }
         else if (command == "4") {
+
+            run.updatePro();
             cout << "Patient record updated!" << endl;
             //Update information
         }
@@ -80,6 +84,7 @@ int main() {
             // string ufid;
             // inStream >> ufid;
             // tree.remove(ufid);
+            run.removePro();
             cout << "Patient removed successfully!" << endl;
         }
 
@@ -89,24 +94,25 @@ int main() {
             //Show top x highest-rated patients
             int x = 0;
             cout << "Showing top " << x << " highest at risk patients:" << endl;
+
+            run.topX();
         }
 
         else if (command == "7") {
             //Save data to file
+            run.saveToFile();
             cout << "Patient data saved to file!" << endl;
         }
         else if (command == "8") {
 
             cout << "Exiting..." << endl;
+            run.exitOP();
             break;
         }
-
 
         else {
             cout << "UNKNOWN COMMAND: TRY AGAIN" << endl;
         }
-
-
 
     }
     cout << "Thank you for using the Senior Fall-Risk Predictor!" << endl ;

@@ -6,9 +6,31 @@
 
 
 
-    // get functions
 
-    int Patient::Patient::getAge() {
+//Default Constructor
+Patient::Patient()
+    : age(0),
+      sex(' '),
+      height(0.0),
+      weight(0.0),
+      bmi(0.0),
+      falls(0),
+      medCount(0),
+      riskyMedUse(false),
+      tugTime(0.0),
+      mobilityScore(0.0),
+      riskScore(0.0),
+      riskLevel("Low")
+{
+}
+
+
+    // get functions
+string Patient::getId() {
+    return this->id;
+}
+
+int Patient::Patient::getAge() {
         return this->age;
     }
 
