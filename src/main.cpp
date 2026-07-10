@@ -7,12 +7,14 @@ using namespace std;
 
 
 int main() {
+    cout << endl;
+    cout << "Welcome To the Senior Fall-Risk Predictor!" << endl;
     string line;
     while (true) {
         //Main menu
         cout << endl;
-        cout << "Welcome To the Senior Fall-Risk Predictor!" << endl << endl;
-        cout << "Please select an option:" << endl << endl;
+        cout<< "MAIN MENU";
+        cout << endl;
         cout << "1. Load patient data from file" << endl;
         cout << "2. Add new patient record" << endl;
         cout << "3. Search patient by ID" << endl;
@@ -49,7 +51,7 @@ int main() {
             //
             // inStream >> ufid;
             // //tree.insert(name, ufid);
-            cout << "Record inserted!";
+            cout << "Record inserted!" <<endl;
         }
 
         else if (command == "3") {
@@ -66,10 +68,10 @@ int main() {
             // }
 
             // tree.search(arg);
-            cout << "Patient found!";
+            cout << "Patient found!" << endl;
         }
         else if (command == "4") {
-            cout << "Patient record Updated" << endl;
+            cout << "Patient record updated!" << endl;
             //Update information
         }
 
@@ -78,7 +80,7 @@ int main() {
             // string ufid;
             // inStream >> ufid;
             // tree.remove(ufid);
-            cout << "Patient removed successfully!";
+            cout << "Patient removed successfully!" << endl;
         }
 
 
@@ -86,12 +88,12 @@ int main() {
         else if (command == "6") {
             //Show top x highest-rated patients
             int x = 0;
-            cout << "Showing top " << x << " highest at risk patients";
+            cout << "Showing top " << x << " highest at risk patients:" << endl;
         }
 
         else if (command == "7") {
             //Save data to file
-            cout << "Patient data saved to file!";
+            cout << "Patient data saved to file!" << endl;
         }
         else if (command == "8") {
 
