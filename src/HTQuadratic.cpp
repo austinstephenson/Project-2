@@ -57,15 +57,19 @@ bool HTQuadratic::insert(Patient &newPatient) {
         int index =probeHash(hashcode,i);
         if (!table[index].occupied||table[index].deleted) {
 
+            table[index].id=key;
             table[index].patient=newPatient;
+
+
             table[index].occupied=true;
             table[index].deleted=false;
+
             size++;
 
             return true;
         }
 
-        if (table[index].patient.getId()==key) {
+        if (table[index].id==key) {
             return false;
         }
 
@@ -92,7 +96,7 @@ Patient* HTQuadratic::search(const string id) {
             return nullptr;
         }
 
-        if (table[index].occupied and table[index].patient.getId()==id) {
+        if (table[index].occupied and table[index].id==id) {
             return &table[index].patient;
         }
 
