@@ -20,6 +20,7 @@ private:
     char sex;
     double height; //inches
     double weight; //lbs
+    double bmi;
 
     int falls;
     int medCount;
@@ -44,6 +45,7 @@ private:
     char sex,
     double height, //inches
     double weight, //lbs
+    double bmi,
 
     int falls,
     int medCount,
@@ -61,6 +63,7 @@ private:
     char getSex();
     double getHeight();
     double getWeight();
+    double getBMI();
     int getFalls();
     int getMedCount();
     bool getRiskyMedUse();
@@ -71,7 +74,8 @@ private:
 
     //setters
 
-    void setName(string newName);
+    void setLastName(string newName);
+    void setFirstName(string newName);
     void setAge(int newAge);
     void setWeight(double newWeight);
     void addFall();
@@ -84,14 +88,14 @@ private:
 
     //calc -short for calculations
 
-    double calcBMI() const;
+    void calcBMI();
 
     void calcRiskScore();
     void calcRiskLevel();
 
-    void updateRiskAssesment();
+    void updateProfile();
 
-    bool isHighRisk() const;
+    bool isHighRisk();
 
     //displays
     void displayPatient();

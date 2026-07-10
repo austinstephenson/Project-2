@@ -1,0 +1,143 @@
+//
+// Created by Wstep on 7/10/2026.
+//
+#include "Patient.h"
+#include <cmath>
+
+
+
+    // get functions
+
+    int Patient::Patient::getAge() {
+        return this->age;
+    }
+
+    char Patient::getSex() {
+        return this->sex;
+    }
+
+    double Patient::getHeight() {
+        return this->height;
+    }
+
+    double Patient::getWeight() {
+        return this->weight;
+    }
+
+    double Patient::getBMI() {
+        return this->bmi;
+    }
+
+    int Patient::getFalls() {
+        return this->falls;
+    }
+
+    int Patient::getMedCount() {
+        return this->medCount;
+    }
+
+    bool Patient::getRiskyMedUse() {
+        return this->riskyMedUse;
+    }
+
+    double Patient::getTugTime() {
+        return this->tugTime;
+    }
+
+    double Patient::getMobilityScore() {
+        return this->mobilityScore;
+    }
+
+    double Patient::getRiskScore() {
+        return this->riskScore;
+    }
+
+    string Patient::getRiskLevel() {
+        return this->riskLevel;
+    }
+
+    //setters
+
+    void Patient::setLastName(string newName) {
+        this->lastname = newName;
+    }
+    void Patient::setFirstName(string newName) {
+        this->firstname = newName;
+    }
+
+
+    void Patient::setAge(int newAge) {
+        this->age = newAge;
+    }
+
+    void Patient::setWeight(double newWeight) {
+        this->weight = newWeight;
+    }
+
+    void Patient::addFall() {
+        this->falls++;
+    }
+
+    void Patient::setMedCount(int newMedCount) {
+        this->medCount = newMedCount;
+    }
+
+    void Patient::setRiskyMedUse(bool newRiskyMedUse) {
+        this->riskyMedUse = newRiskyMedUse;
+    }
+
+    void Patient::setTugTime(double newTugTime) {
+        this->tugTime = newTugTime;
+    }
+
+    void Patient::setMobilityScore(double newMobilityScore) {
+        this->mobilityScore = newMobilityScore;
+    }
+
+    void Patient::setRiskScore(double newRiskScore) {
+        this->riskScore = newRiskScore;
+    }
+
+    void Patient::setRiskLevel(string newRiskLevel) {
+        calcRiskLevel();
+        return;
+    }
+
+    //calc -short for calculations
+
+    void Patient::calcBMI() {
+        this->bmi = (this->weight/ pow(this->height,2)) * 703;
+    }
+
+    void Patient::calcRiskScore() {
+    }
+
+    void Patient::calcRiskLevel() {
+        if (riskScore >= 100)
+            riskLevel = "SEVERE";
+        else if (riskScore >= 50)
+            riskLevel = "High";
+
+        else if (riskScore >= 25)
+            riskLevel = "Moderate";
+        else
+            riskLevel = "Low";
+    }
+
+    void Patient::updateProfile() {
+    }
+
+    bool Patient::isHighRisk() {
+        if (this->riskScore >= 50) {
+            return true;
+        }
+        return false;
+    }
+
+    //displays
+    void Patient::displayPatient() {
+    }
+
+
+    Patient::~Patient() {
+    }
