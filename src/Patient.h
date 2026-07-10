@@ -1,4 +1,4 @@
-//
+  //
 // Created by bosst on 7/9/2026.
 //
 #pragma once
@@ -14,7 +14,8 @@ class Patient {
 private:
 
     string id;
-    string name;
+    string lastname;
+    string firstname;
     int age;
     char sex;
     double height; //inches
@@ -37,7 +38,8 @@ private:
 
     Patient(
     string id,
-    string name,
+    string lastname,
+    string firstname,
     int age,
     char sex,
     double height, //inches
