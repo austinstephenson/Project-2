@@ -27,6 +27,8 @@ add_executable(Main
         src/HTQuadratic.h
         src/HTQuadratic.cpp
         src/Patient.cpp
+        src/UIface.cpp
+        src/UIface.h
         # your main file
         # add your own header files below - should be automatically added in CLion
         # example (can also separate with newlines):
@@ -37,6 +39,8 @@ add_executable(Main
 add_executable(Tests
         test/test.cpp
         src/Patient.h
+        src/UIface.cpp
+        src/UIface.h
         # your test file
         # add your own header files below - should be automatically added in CLion
         # example (can also separate with newlines):
