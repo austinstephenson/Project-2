@@ -25,6 +25,7 @@ add_executable(Main
         src/main.cpp
         src/Patient.h
         src/HTQuadratic.h
+        src/HTQuadratic.cpp
         # your main file
         # add your own header files below - should be automatically added in CLion
         # example (can also separate with newlines):
