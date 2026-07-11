@@ -55,4 +55,9 @@ public:
     bool insert(Patient& newPatient);
     bool remove(string& id);
 
+    //sorting functs
+    vector<Patient> getPatients() const;
+    void sortPatients(vector<Patient>& patients, int start, int end);
+    void merge(vector<Patient>& patients, int start, int middle, int end);
+
 };
