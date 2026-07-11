@@ -207,6 +207,59 @@ char Patient::getSex() {
     }
 
     //displays
+    void Patient::displayRiskFactors() {
+        cout << "Main Risk Factors: ";
+    
+        bool hasFactor = false;
+    
+        if (falls > 0) {
+            cout << "Previous fall history";
+            hasFactor = true;
+        }
+    
+        if (medCount >= 5) {
+            if (hasFactor) cout << ", ";
+            cout << "High medication count";
+            hasFactor = true;
+        }
+    
+        if (riskyMedUse) {
+            if (hasFactor) cout << ", ";
+            cout << "Risky medication use";
+            hasFactor = true;
+        }
+    
+        if (tugTime > 13.5) {
+            if (hasFactor) cout << ", ";
+            cout << "Slow TUG time";
+            hasFactor = true;
+        }
+    
+        if (mobilityScore < 70.0) {
+            if (hasFactor) cout << ", ";
+            cout << "Low mobility score";
+            hasFactor = true;
+        }
+    
+        if (age >= 75) {
+            if (hasFactor) cout << ", ";
+            cout << "Advanced age";
+            hasFactor = true;
+        }
+    
+        if (bmi < 18.5 || bmi >= 30.0) {
+            if (hasFactor) cout << ", ";
+            cout << "BMI risk factor";
+            hasFactor = true;
+        }
+    
+        if (!hasFactor) {
+            cout << "No major risk factors flagged";
+        }
+    
+        cout << endl;
+    }
+
     void Patient::displayPatient() {
 
         this->isHighRisk();
