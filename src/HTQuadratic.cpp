@@ -164,7 +164,7 @@ bool HTQuadratic::insert(Patient &newPatient) {
             return true;
         }
 
-        if (table[index].id==key) {
+        if (table[index].id==key and table[index].occupied and!table[index].deleted) {
             return false;
         }
 
@@ -207,13 +207,12 @@ Patient* HTQuadratic::search(const string id) {
 bool HTQuadratic::remove(string &id) {
 
     int hashcode=hash(id);
-    cout<<"Searching..."<<endl;
     for (int i=0;i<capacity;i++) {
         int index=probeHash(hashcode,i);
 
 
         if (!table[index].occupied and !table[index].deleted) {
-            cout<<"Not found"<<endl;
+
                return false;
             }
 
@@ -221,7 +220,7 @@ bool HTQuadratic::remove(string &id) {
             table[index].occupied=false;
             table[index].deleted=true;
             size--;
-            cout<<"Deleted"<<endl;
+
             return true;
         }
     }
@@ -260,7 +259,7 @@ void HTQuadratic::sortPatients(vector<Patient>& patients, int start, int end) {
 }
 
 //merge sort helper funtion
-// merge sort helper function
+
 void HTQuadratic::merge(vector<Patient>& patients, int start, int middle, int end) {
 
     vector<Patient> left_copy(patients.begin() + start, patients.begin() + middle + 1);
