@@ -33,7 +33,7 @@ class UIface {
     void exitOP();
 
     //Helpers
-    double executiontime();
+    void executiontime();
 };
 
 

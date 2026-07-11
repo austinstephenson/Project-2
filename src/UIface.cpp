@@ -3,12 +3,16 @@
 //
 
 #include "UIface.h"
+
+#include <chrono>
+
 #include "Patient.h"
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <vector>
 using namespace std;
+using namespace std::chrono;
 
 void UIface::runMenu() {
     //Main menu
@@ -35,10 +39,21 @@ void UIface::load() {
     cout << "Enter CSV filename: ";
     getline(cin, filename);
 
+    start =high_resolution_clock::now();
+
     if (table.loadCSV(filename))
         cout << "Hash Load successful.\n";
     else
-        cout << "Unable to open file.\n";
+        cout << "Hash Load failed.\n";
+    executiontime();
+
+    start = high_resolution_clock::now();
+    if (maxHeap.loadCSV(filename)) {
+        cout << "Heap load successful.\n";
+    }
+    else
+        cout << "Heap load failed.\n";
+    executiontime();
 }
 
 void UIface::addPro() {
@@ -140,11 +155,26 @@ void UIface::sID() {
 
     cout<<"Hashtable method"<<endl;
 
+    //time for Hash search
+    start =high_resolution_clock::now();
+
+
     p= table.search(idcode);
     if (p == nullptr) {
         cout << "Patient not found." << endl;
         return;
     }
+    executiontime();
+
+
+    cout << "Heap method" << endl;
+    start = high_resolution_clock::now();
+    //LOGIC FOR HEAP SEARCH
+
+
+
+    executiontime();
+
     cout<< "Patient found!" << endl;
     p->displayPatient();
 
@@ -235,10 +265,10 @@ void UIface::updatePro() {
             p->calcBMI();
             p->calcRiskScore();
             p->calcRiskLevel();
-        
+
             cout << "Update Complete!" << endl;
             p->displayPatient();
-        
+
             curupdate = false;
         }
         else {
@@ -262,42 +292,28 @@ void UIface::removePro() {
         return;
     }
 
+    //Hash id removal time
+    start =high_resolution_clock::now();
+
     if (table.remove(idcode)) {
-        cout << "Patient removed successfully!" << endl;
+        cout << "Patient removed successfully from Hash." << endl;
     }
     else {
         cout << "Removal failed." << endl;
     }
+
+    //Heap id removal time
+    if (maxHeap.removeId(idcode)) {
+        cout << "Patient removed successfully from Heap." << endl;
+    }
+    else {
+        cout << "Removal failed." << endl;
+    }
+    executiontime();
+
 }
 
 void UIface::topX() {
-    string input;
-    cout << "Enter number of highest-risk patients to show: ";
-    getline(cin, input);
-
-    int x = stoi(input);
-
-    vector<Patient> patients = table.getPatients();
-
-    if (patients.empty()) {
-        cout << "No patients loaded." << endl;
-        return;
-    }
-
-    table.sortPatients(patients, 0, patients.size() - 1);
-
-    if (x > (int)patients.size()) {
-        x = patients.size();
-    }
-
-    cout << endl;
-    cout << "Top " << x << " Highest-Risk Patients:" << endl;
-
-    for (int i = 0; i < x; i++) {
-        cout << endl;
-        cout << "Rank #" << i + 1 << endl;
-        patients[i].displayPatient();
-    }
 }
 
 void UIface::saveToFile() {
@@ -314,3 +330,14 @@ void UIface::saveToFile() {
 }
 void UIface::exitOP() {
 }
+
+
+
+void UIface::executiontime() {
+    high_resolution_clock::time_point end=
+        high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(end - start);
+    cout << "Time taken: "
+        << duration.count()
+        << " microseconds" <<endl;
+};
