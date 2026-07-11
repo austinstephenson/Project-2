@@ -1,5 +1,6 @@
 #pragma once
 #include "Patient.h"
+#include <fstream>
 
 //
 // Created by bosst on 7/9/2026.
@@ -40,6 +41,13 @@ class HTQuadratic {
 
 public:
     HTQuadratic();
+
+
+//LOAD and Save
+    bool loadCSV(const string& filename);
+    bool saveCSV(const string& filename);
+
+
     ~HTQuadratic();
 
     Patient* search(string id);

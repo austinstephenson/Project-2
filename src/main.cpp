@@ -37,7 +37,6 @@ int main() {
 
             run.load();
 
-            cout <<"Load Successful" <<endl;
 
         }
         else if(command == "2") {

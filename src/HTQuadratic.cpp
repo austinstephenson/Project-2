@@ -2,11 +2,12 @@
 // Created by bosst on 7/9/2026.
 //
 
-
-
 #include "HTQuadratic.h"
 
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 
 //Constructor
@@ -22,6 +23,98 @@ HTQuadratic::HTQuadratic() {
 
 }
 
+//LOAD from CSV
+bool HTQuadratic::loadCSV(const string &filename) {
+    ifstream file(filename);
+
+    if (!file.is_open())
+        return false;
+
+    string line;
+
+    // Skip header formatting
+    getline(file, line);
+
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        vector<string> fields;
+        string field;
+        while (getline(ss, field, ','))
+            fields.push_back(field);
+
+        if (fields.size() != 15)
+            continue;
+
+        Patient patient(
+            fields[0],                 // id
+            fields[1],                 // lastname
+            fields[2],                 // firstname
+            stoi(fields[3]),           // age
+            fields[4][0],              // sex
+            stod(fields[5]),           // height
+            stod(fields[6]),           // weight
+           // stod(fields[7]),           // bmi -> Calculated (not inserted manually)
+            stoi(fields[8]),           // falls
+            stoi(fields[9]),           // medCount
+            stoi(fields[10]),          // riskyMedUse
+            stod(fields[11]),          // tug
+            stod(fields[12])         // mobility
+          //  stod(fields[13]),          // riskScore -> Calculated
+          //   fields[14]                 // riskLevel -> Calculated
+        );
+        patient.calcBMI();
+        patient.calcRiskLevel();
+        patient.calcRiskScore();
+
+        insert(patient);
+    }
+
+    file.close();
+
+    return true;
+}
+
+bool HTQuadratic::saveCSV(const string &filename) {
+
+    ofstream file(filename);
+
+    if (!file.is_open())
+        return false;
+
+    file << "id,lastname,firstname,age,sex,height,weight,bmi,falls,"
+            "medCount,riskyMedUse,tugTime,mobilityScore,riskScore,riskLevel\n";
+
+    for (int i = 0; i < capacity; i++)
+    {
+        if (table[i].occupied && !table[i].deleted)
+        {
+            Patient &p = table[i].patient;
+
+            file
+                << p.getId() << ','
+                << p.getLastname() << ','
+                << p.getFirstname() << ','
+                << p.getAge() << ','
+                << p.getSex() << ','
+                << p.getHeight() << ','
+                << p.getWeight() << ','
+                << p.getBMI() << ','
+                << p.getFalls() << ','
+                << p.getMedCount() << ','
+                << p.getRiskyMedUse() << ','
+                << p.getTugTime() << ','
+                << p.getMobilityScore() << ','
+                << p.getRiskScore() << ','
+                << p.getRiskLevel()
+                << '\n';
+        }
+    }
+
+    file.close();
+
+    return true;
+}
 
 
 //HASH Function

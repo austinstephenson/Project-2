@@ -29,6 +29,14 @@ void UIface::load() {
 
     //Call pararmetrized constructor and use CSV file with getline for input
 
+    string filename;
+    cout << "Enter CSV filename: ";
+    getline(cin, filename);
+
+    if (table.loadCSV(filename))
+        cout << "Load successful.\n";
+    else
+        cout << "Unable to open file.\n";
 
 
 
@@ -54,6 +62,15 @@ void UIface::topX() {
 }
 
 void UIface::saveToFile() {
+
+    string filename;
+    cout << "Enter output filename: ";
+    getline(cin, filename);
+
+    if (table.saveCSV(filename))
+        cout << "Save successful.\n";
+    else
+        cout << "Unable to save file.\n";
 }
 
 void UIface::exitOP() {
