@@ -5,14 +5,13 @@
 #include "UIface.h"
 
 #include <chrono>
+#include "Compare.h"
 
 #include "Patient.h"
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <vector>
-
-#include "Compare.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -320,7 +319,7 @@ void UIface::removePro() {
 
 }
 
-void UIface::topX() {
+void UIface::topXx() {
 
     string input;
     cout << "How many patients would you like to see?";
