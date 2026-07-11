@@ -46,9 +46,16 @@ Patient MaxHeap::peek() {
 }
 
 void MaxHeap::extract() {
-    Patient maxPatient=heap[0];
+    if (heap.empty()) {
+        cout << "Heap is empty." << endl;
+        return;
+    }
 
-    heap[0]=heap.back();
+    Patient maxPatient = heap[0];
+
+    heap[0] = heap.back();
+    heap.pop_back();
+
     if (!heap.empty()) {
         siftDown(0);
     }
