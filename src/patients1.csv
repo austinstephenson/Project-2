@@ -1,3 +1,1 @@
 id,lastname,firstname,age,sex,height,weight,bmi,falls,medCount,riskyMedUse,tugTime,mobilityScore,riskScore,riskLevel
-p00001,Stephenson,Will,21,M,72,185,25.0878,0,0,0,11,80,6,Low
-p00003,Armes,Mycah,33,M,73,200,26.3839,0,0,0,32,43,109.6,SEVERE

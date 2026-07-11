@@ -164,12 +164,21 @@ char Patient::getSex() {
         this->mobilityScore = newMobilityScore;
     }
 
-    void Patient::setRiskScore(double newRiskScore) {
-        this->riskScore = newRiskScore;
-    }
+
+void Patient::calcRiskScore(){
+    double score = 0.0;
+    score += falls * 15.0;
+    score += medCount * 3.0;
+    score += riskyMedUse ? 10.0 : 0.0;
+    score += (tugTime > 13.5) ? (tugTime - 13.5) * 5.0 : 0.0;
+    score += (100.0 - mobilityScore) * 0.3;
+    score += (age > 75) ? (age - 75) * 0.5 : 0.0;
+    this->riskScore = score;
+}
 
     void Patient::setRiskLevel(string newRiskLevel) {
-        this->riskLevel = newRiskLevel;
+    calcRiskLevel();
+    return;
     }
 
     //calc -short for calculations
@@ -195,11 +204,7 @@ char Patient::getSex() {
 
     bool Patient::isHighRisk() {
 
-        if (this->riskScore >= 100) {
-            cout << "SEVERE risk Patient" << endl;
-            return true;
-        }
-        if (this->riskScore >= 50) {
+        if (this->riskScore >= 70) {
             cout << "High risk Patient" << endl;
             return true;
         }
