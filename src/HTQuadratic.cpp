@@ -4,6 +4,7 @@
 
 #include "HTQuadratic.h"
 
+#include <algorithm>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -163,7 +164,7 @@ bool HTQuadratic::insert(Patient &newPatient) {
             return true;
         }
 
-        if (table[index].id==key) {
+        if (table[index].id==key and table[index].occupied and!table[index].deleted) {
             return false;
         }
 
@@ -206,13 +207,12 @@ Patient* HTQuadratic::search(const string id) {
 bool HTQuadratic::remove(string &id) {
 
     int hashcode=hash(id);
-    cout<<"Searching..."<<endl;
     for (int i=0;i<capacity;i++) {
         int index=probeHash(hashcode,i);
 
 
         if (!table[index].occupied and !table[index].deleted) {
-            cout<<"Not found"<<endl;
+
                return false;
             }
 
@@ -220,7 +220,7 @@ bool HTQuadratic::remove(string &id) {
             table[index].occupied=false;
             table[index].deleted=true;
             size--;
-            cout<<"Deleted"<<endl;
+
             return true;
         }
     }
@@ -229,8 +229,60 @@ bool HTQuadratic::remove(string &id) {
 };
 
 
+//-------------sorting--------
+
+//populate a vector
+vector<Patient> HTQuadratic::getPatients() const {
+    vector<Patient> result;
+
+    for (int i=0;i<capacity;i++) {
+        if (table[i].occupied and !table[i].deleted) {
+            result.push_back(table[i].patient);
+        }
+    }
+    return result;
+};
+
+//merge sort from sorting study guide
+
+void HTQuadratic::sortPatients(vector<Patient>& patients, int start, int end) {
+
+    if (start<end) {
+        int middle=(start+end)/2;
+        sortPatients(patients,start,middle);
+        sortPatients(patients,middle+1,end);
+
+        merge(patients,start,middle,end);
+    }
 
 
+}
+
+//merge sort helper funtion
+
+void HTQuadratic::merge(vector<Patient>& patients, int start, int middle, int end) {
+
+    vector<Patient> left_copy(patients.begin() + start, patients.begin() + middle + 1);
+    vector<Patient> right_copy(patients.begin() + middle + 1, patients.begin() + end + 1);
+
+    int i = 0, j = 0, k = start;
+
+    // descending by risk score: highest risk first
+    while (i < (int)left_copy.size() && j < (int)right_copy.size()) {
+        if (left_copy[i].getRiskScore() >= right_copy[j].getRiskScore()) {
+            patients[k++] = left_copy[i++];
+        } else {
+            patients[k++] = right_copy[j++];
+        }
+    }
+
+    while (i < (int)left_copy.size()) {
+        patients[k++] = left_copy[i++];
+    }
+    while (j < (int)right_copy.size()) {
+        patients[k++] = right_copy[j++];
+    }
+}
 
 //Destructitotiononator
 
