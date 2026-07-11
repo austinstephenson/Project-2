@@ -2,6 +2,7 @@
 // Created by bosst on 7/11/2026.
 #include <fstream>
 #include "Heap.h"
+#include "Patient.h"
 #include <algorithm>
 
 void MaxHeap::siftUp(int i) {
@@ -44,14 +45,15 @@ Patient MaxHeap::peek() {
     return heap[0];
 }
 
-Patient MaxHeap::extract() {
+void MaxHeap::extract() {
     Patient maxPatient=heap[0];
 
     heap[0]=heap.back();
     if (!heap.empty()) {
         siftDown(0);
     }
-    return maxPatient;
+
+    maxPatient.displayPatient();
 }
 
 Patient* MaxHeap::searchId(const string& id) {

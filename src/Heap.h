@@ -31,7 +31,7 @@ private:
 public:
     void insert(Patient& newPatient);
     Patient peek();
-    Patient extract();
+    void extract();
 
 
     Patient* searchId(const string& id);
