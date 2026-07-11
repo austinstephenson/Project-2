@@ -7,8 +7,8 @@
 #define PROJECT1_COMPARE_H
 #include "Heap.h"
 #include "HTQuadratic.h"
+#include <vector>
 
-#endif //PROJECT1_COMPARE_H
 
 //Top Helper function
 
@@ -17,7 +17,7 @@ vector<Patient> topX(MaxHeap heap,int x) {
     vector<Patient> result;
 
     for (int i = 0; i < x and !heap.empty(); i++) {
-        heap.extract();
+        result.push_back(heap.extract());
 
     }
     return result;
@@ -36,3 +36,5 @@ vector<Patient> topX(HTQuadratic table, int x) {
         return result;
 
 }
+
+#endif //PROJECT1_COMPARE_H
