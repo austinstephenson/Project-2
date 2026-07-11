@@ -231,10 +231,16 @@ void UIface::updatePro() {
         else if (input == "8") {
             cout << "Enter new Mobility Score: "<< endl;
             getline(cin, input);
-            p->setTugTime (stod(input));
+            p->setMobilityScore(stod(input));
         }
         else if (input == "9") {
+            p->calcBMI();
+            p->calcRiskScore();
+            p->calcRiskLevel();
+        
             cout << "Update Complete!" << endl;
+            p->displayPatient();
+        
             curupdate = false;
         }
         else {
@@ -267,6 +273,33 @@ void UIface::removePro() {
 }
 
 void UIface::topX() {
+    string input;
+    cout << "Enter number of highest-risk patients to show: ";
+    getline(cin, input);
+
+    int x = stoi(input);
+
+    vector<Patient> patients = table.getPatients();
+
+    if (patients.empty()) {
+        cout << "No patients loaded." << endl;
+        return;
+    }
+
+    table.sortPatients(patients, 0, patients.size() - 1);
+
+    if (x > (int)patients.size()) {
+        x = patients.size();
+    }
+
+    cout << endl;
+    cout << "Top " << x << " Highest-Risk Patients:" << endl;
+
+    for (int i = 0; i < x; i++) {
+        cout << endl;
+        cout << "Rank #" << i + 1 << endl;
+        patients[i].displayPatient();
+    }
 }
 
 void UIface::saveToFile() {
