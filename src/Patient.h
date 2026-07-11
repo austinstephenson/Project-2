@@ -56,6 +56,8 @@ private:
     // get functions
 
     string getId();
+    string getLastname();
+    string getFirstname();
     int getAge();
     char getSex();
     double getHeight();
