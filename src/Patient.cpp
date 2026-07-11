@@ -205,7 +205,7 @@ void Patient::calcRiskScore(){
     bool Patient::isHighRisk() {
 
         if (this->riskScore >= 70) {
-            cout << "High risk Patient" << endl;
+            cout << "High-risk Patient" << endl;
             return true;
         }
         return false;
