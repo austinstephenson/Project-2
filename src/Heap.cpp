@@ -1,6 +1,6 @@
 //
 // Created by bosst on 7/11/2026.
-
+#include <ifstream>
 #include "Heap.h"
 #include <algorithm>
 
@@ -75,5 +75,57 @@ bool MaxHeap::removeId(const string& id) {
         siftUp(idx);
         siftDown(idx);
     }
+    return true;
+}
+
+bool MaxHeap::loadCSV(const string &filename) {
+    ifstream file(filename);
+
+    if (!file.is_open())
+        return false;
+
+    string line;
+
+    // Skip header formatting
+    getline(file, line);
+
+    while (getline(file, line))
+    {
+        stringstream ss(line);
+        vector<string> fields;
+        string field;
+        while (getline(ss, field, ','))
+            fields.push_back(field);
+
+        if (fields.size() != 15)
+            continue;
+
+        Patient patient(
+            fields[0],                 // id
+            fields[1],                 // lastname
+            fields[2],                 // firstname
+            stoi(fields[3]),           // age
+            fields[4][0],              // sex
+            stod(fields[5]),           // height
+            stod(fields[6]),           // weight
+           // stod(fields[7]),           // bmi -> Calculated (not inserted manually)
+            stoi(fields[8]),           // falls
+            stoi(fields[9]),           // medCount
+            stoi(fields[10]),          // riskyMedUse
+            stod(fields[11]),          // tug
+            stod(fields[12])         // mobility
+          //  stod(fields[13]),          // riskScore -> Calculated
+          //   fields[14]                 // riskLevel -> Calculated
+        );
+        patient.calcBMI();
+        patient.calcRiskScore();
+        patient.calcRiskLevel();
+
+
+        insert(patient);
+    }
+
+    file.close();
+
     return true;
 }

@@ -37,6 +37,8 @@ public:
     Patient* searchId(const string& id);
     bool removeId(const string& id);
 
+    bool loadCSV(const string &filename);
+
     int size(){ return heap.size(); };
     bool empty(){return heap.empty();};
 
