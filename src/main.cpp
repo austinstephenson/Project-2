@@ -33,8 +33,6 @@ int main() {
 
         if (line == "1") {
             //Load Patient data function
-            cout << "Loading Patient data..."<< endl;
-
             run.load();
 
 
@@ -69,7 +67,6 @@ int main() {
 
             // tree.search(arg);
             run.sID();
-            cout << "Patient found!" << endl;
         }
         else if (command == "4") {
 

@@ -64,8 +64,9 @@ bool HTQuadratic::loadCSV(const string &filename) {
           //   fields[14]                 // riskLevel -> Calculated
         );
         patient.calcBMI();
-        patient.calcRiskLevel();
         patient.calcRiskScore();
+        patient.calcRiskLevel();
+
 
         insert(patient);
     }
