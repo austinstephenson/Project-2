@@ -71,7 +71,15 @@ int Patient::getAge() {
         return this->age;
     }
 
-    char Patient::getSex() {
+string Patient::getLastname() {
+    return this->lastname;
+}
+
+string Patient::getFirstname() {
+    return this->firstname;
+}
+
+char Patient::getSex() {
         return this->sex;
     }
 
