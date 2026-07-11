@@ -100,6 +100,7 @@ private:
 
     //displays
     void displayPatient();
+    void displayRiskFactors();
 
 
     ~Patient();
