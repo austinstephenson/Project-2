@@ -5,14 +5,34 @@
 
 #ifndef PROJECT1_COMPARE_H
 #define PROJECT1_COMPARE_H
+#include "Heap.h"
+#include "HTQuadratic.h"
 
 #endif //PROJECT1_COMPARE_H
 
 //Top Helper function
 
-void top(int x) {
+vector<Patient> topX(MaxHeap heap,int x) {
 
-    for (int i = 0; i < x; i++) {
+    vector<Patient> result;
+
+    for (int i = 0; i < x and !heap.empty(); i++) {
+        heap.extract();
 
     }
+    return result;
+}
+
+vector<Patient> topX(HTQuadratic table, int x) {
+    vector<Patient> patients=table.getPatients();
+
+    if (!patients.empty()) {
+        table.sortPatients(patients,0,patients.size()-1);
+    }
+        vector<Patient> result;
+        for (int i = 0; i < x and i <(int)patients.size(); i++) {
+            result.push_back(patients[i]);
+        }
+        return result;
+
 }
