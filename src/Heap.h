@@ -18,6 +18,9 @@ private:
     int left(int i) const { return (2*i)+1; }
     int right(int i) const { return (2*i)+2; }
 
+    void siftUp(int i);
+    void siftDown(int i);
+
 
 
 public:
@@ -31,7 +34,7 @@ public:
 
     int size(){ return heap.size(); };
     bool empty(){return heap.empty();};
-    
+
 };
 
 #endif //PROJECT1_HEAP_H
