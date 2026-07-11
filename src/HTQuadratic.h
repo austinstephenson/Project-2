@@ -36,7 +36,7 @@ class HTQuadratic {
 
     int hash(const string& key) const;
     int probeHash(int index, int i) const;
-
+    void merge(vector<Patient>& patients, int start, int middle, int end);
 
 
 public:
@@ -58,6 +58,7 @@ public:
     //sorting functs
     vector<Patient> getPatients() const;
     void sortPatients(vector<Patient>& patients, int start, int end);
-    void merge(vector<Patient>& patients, int start, int middle, int end);
+
+
 
 };
