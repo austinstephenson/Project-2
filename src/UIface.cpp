@@ -38,9 +38,6 @@ void UIface::load() {
         cout << "Hash Load successful.\n";
     else
         cout << "Unable to open file.\n";
-
-    if (
-
 }
 
 void UIface::addPro() {
