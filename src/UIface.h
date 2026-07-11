@@ -24,6 +24,9 @@ class UIface {
     void topX();
     void saveToFile();
     void exitOP();
+
+    //Helpers
+    double executiontime();
 };
 
 

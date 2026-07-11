@@ -80,7 +80,6 @@ int main() {
             // inStream >> ufid;
             // tree.remove(ufid);
             run.removePro();
-            cout << "Patient removed successfully!" << endl;
         }
 
 

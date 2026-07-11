@@ -143,6 +143,9 @@ void UIface::sID() {
     getline(cin, idcode);
 
     Patient* p= nullptr;
+
+    cout<<"Hashtable method"<<endl;
+
     p= table.search(idcode);
     if (p == nullptr) {
         cout << "Patient not found." << endl;
@@ -248,6 +251,23 @@ void UIface::updatePro() {
 }
 
 void UIface::removePro() {
+    string idcode;
+    cout << "Enter ID of profile to remove: ";
+    getline(cin, idcode);
+
+    Patient* p = table.search(idcode);
+
+    if (p == nullptr) {
+        cout << "Patient not found." << endl;
+        return;
+    }
+
+    if (table.remove(idcode)) {
+        cout << "Patient removed successfully!" << endl;
+    }
+    else {
+        cout << "Removal failed." << endl;
+    }
 }
 
 void UIface::topX() {
@@ -259,7 +279,6 @@ void UIface::saveToFile() {
     cout << "Enter output filename: ";
     getline(cin, filename);
 
-    table.loadCSV(filename);
 
     if (table.saveCSV(filename))
         cout << "Save successful.\n";
