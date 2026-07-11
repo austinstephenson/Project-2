@@ -277,6 +277,7 @@ char Patient::getSex() {
         cout << "Mobility-Score: " << this->mobilityScore << endl;
         cout << "Risk Score: " << this->riskScore << endl;
         cout << "Risk Level: " << this->riskLevel << endl;
+        displayRiskFactors();
     }
 
 
