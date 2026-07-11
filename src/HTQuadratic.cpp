@@ -107,6 +107,37 @@ Patient* HTQuadratic::search(const string id) {
 };
 
 
+//Remove entry
+
+bool HTQuadratic::remove(string &id) {
+
+    int hashcode=hash(id);
+    cout<<"Searching..."<<endl;
+    for (int i=0;i<capacity;i++) {
+        int index=probeHash(hashcode,i);
+
+
+        if (!table[index].occupied and !table[index].deleted) {
+            cout<<"Not found"<<endl;
+               return false;
+            }
+
+        if (table[index].id==id and !table[index].deleted and table[index].occupied) {
+            table[index].occupied=false;
+            table[index].deleted=true;
+            size--;
+            cout<<"Deleted"<<endl;
+            return true;
+        }
+    }
+    cout<<"Not found"<<endl;
+    return false;
+};
+
+
+
+
+
 //Destructitotiononator
 
 HTQuadratic::~HTQuadratic() {
