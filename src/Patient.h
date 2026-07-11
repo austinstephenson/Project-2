@@ -45,17 +45,13 @@ private:
     char sex,
     double height, //inches
     double weight, //lbs
-    double bmi,
 
     int falls,
     int medCount,
     bool riskyMedUse,
 
     double tugTime,
-    double mobilityScore,
-
-    double riskScore,
-    string riskLevel);
+    double mobilityScore);
 
     // get functions
 

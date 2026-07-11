@@ -3,15 +3,19 @@
 //
 #include "Patient.h"
 #include <cmath>
+#include <string>
 
 
 
 
 //Default Constructor
 Patient::Patient()
-    : age(0),
+    : id("0"),
+      lastname(""),
+      firstname(""),
+      age(0),
       sex(' '),
-      height(0.0),
+      height(1.0),
       weight(0.0),
       bmi(0.0),
       falls(0),
@@ -24,13 +28,46 @@ Patient::Patient()
 {
 }
 
+//Parameterized constructor
+Patient::Patient(std::string id,
+                 std::string lastName,
+                 std::string firstName,
+                 int age,
+                 char sex,
+                 double height,
+                 double weight,
+                 int falls,
+                 int medCount,
+                 bool riskyMedUse,
+                 double tugTime,
+                 double mobilityScore)
+    : id(id),
+      lastname(lastName),
+      firstname(firstName),
+      age(age),
+      sex(sex),
+      height(height),
+      weight(weight),
+      bmi(0.0),
+      falls(falls),
+      medCount(medCount),
+      riskyMedUse(riskyMedUse),
+      tugTime(tugTime),
+      mobilityScore(mobilityScore),
 
+      riskScore(0.0),
+      riskLevel("Low")
+{
+    calcBMI();
+    calcRiskScore();
+    calcRiskLevel();
+}
     // get functions
 string Patient::getId() {
     return this->id;
 }
 
-int Patient::Patient::getAge() {
+int Patient::getAge() {
         return this->age;
     }
 
