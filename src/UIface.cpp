@@ -337,6 +337,8 @@ void UIface::saveToFile() {
         cout << "Unable to save file.\n";
 }
 void UIface::exitOP() {
+
+    //NEEDS TO EXIST even though empty
 }
 
 
