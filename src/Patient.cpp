@@ -177,6 +177,7 @@ char Patient::getSex() {
     }
 
     void Patient::calcRiskScore() {
+
     }
 
     void Patient::calcRiskLevel() {
