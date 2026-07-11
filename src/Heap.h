@@ -24,7 +24,7 @@ private:
 
 
 public:
-    void insert(Patient patient);
+    void insert(Patient& newPatient);
     Patient peek();
     Patient extract();
 
