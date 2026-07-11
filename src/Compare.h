@@ -12,7 +12,7 @@
 
 //Top Helper function
 
-vector<Patient> topX(MaxHeap heap,int x) {
+inline vector<Patient> topX(MaxHeap heap,int x) {
 
     vector<Patient> result;
 
@@ -23,7 +23,7 @@ vector<Patient> topX(MaxHeap heap,int x) {
     return result;
 }
 
-vector<Patient> topX(HTQuadratic table, int x) {
+inline vector<Patient> topX(HTQuadratic& table, int x) {
     vector<Patient> patients=table.getPatients();
 
     if (!patients.empty()) {

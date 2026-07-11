@@ -11,6 +11,8 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+
+#include "Compare.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -265,6 +267,9 @@ void UIface::updatePro() {
             p->calcRiskScore();
             p->calcRiskLevel();
 
+            maxHeap.removeId(idcode);
+            maxHeap.insert(*p);
+
             cout << "Update Complete!" << endl;
             p->displayPatient();
 
@@ -317,7 +322,33 @@ void UIface::removePro() {
 
 void UIface::topX() {
 
+    string input;
+    cout << "How many patients would you like to see?";
+    getline(cin, input);
+    int x= stoi(input);
+
     cout << "Hashtable method"<<endl;
+    start=high_resolution_clock::now();
+    vector<Patient> reshash=::topX(table,x);
+    executiontime();
+
+
+    cout << endl << "Heap method"<<endl;
+    start=high_resolution_clock::now();
+    vector<Patient> resheap=::topX(maxHeap,x);
+    executiontime();
+
+    cout<<" Top "<<x<<" from Hash: \n";
+    for (auto& p :reshash) {
+        p.displayPatient();
+        cout<<"---------------------------\n";
+    }
+
+    cout<<"\nTop "<<x<<" from Heap:"<<endl;
+    for (auto& p :resheap) {
+        p.displayPatient();
+        cout<<"---------------------------\n";
+    }
 
 
 
