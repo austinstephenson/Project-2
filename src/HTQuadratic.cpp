@@ -14,7 +14,7 @@
 HTQuadratic::HTQuadratic() {
 
     size=0;
-    capacity=100003;
+    capacity=300011;
 
     table= new Entry[capacity];
 
