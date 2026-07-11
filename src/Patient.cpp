@@ -195,6 +195,21 @@ int Patient::getAge() {
 
     //displays
     void Patient::displayPatient() {
+
+        cout << "ID: " << this->id << endl;
+        cout << "Name: " << this->lastname<<", " << this->firstname << endl;
+        cout << "Age: " << this->age << endl;
+        cout << "Sex: " << this->sex << endl;
+        cout << "Height: " << this->height << endl;
+        cout << "Weight: " << this->weight << endl;
+        cout << "BMI: " << this->bmi;
+        cout << "Falls: " << this->falls << endl;
+        cout << "MedCount: " << this->medCount << endl;
+        cout << "Use of Risky Medication: " << this->riskyMedUse << endl;
+        cout << "TugTime: " << this->tugTime << endl;
+        cout << "Mobility-Score: " << this->mobilityScore << endl;
+        cout << "Risk Score: " << this->riskScore << endl;
+        cout << "Risk Level: " << this->riskLevel << endl;
     }
 
 

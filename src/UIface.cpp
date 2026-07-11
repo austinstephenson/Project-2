@@ -25,6 +25,17 @@ void UIface::runMenu() {
 }
 
 void UIface::load() {
+
+
+    //Call pararmetrized constructor and use CSV file with getline for input
+
+
+
+
+
+
+
+
 }
 
 void UIface::addPro() {
