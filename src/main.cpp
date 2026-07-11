@@ -56,13 +56,7 @@ int main() {
 
         }
 
-
-
         else if (command == "6") {
-            //Show top x highest-rated patients
-            int x = 0;
-            cout << "Showing top " << x << " highest at risk patients:" << endl;
-
             run.topX();
         }
 
