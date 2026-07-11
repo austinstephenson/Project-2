@@ -50,7 +50,7 @@ Patient MaxHeap::peek() {
     return heap[0];
 }
 
-void MaxHeap::extract() {
+Patient MaxHeap::extract() {
     if (heap.empty()) {
         cout << "Heap is empty." << endl;
         return;
