@@ -42,6 +42,11 @@ void MaxHeap::insert(Patient& newPatient) {
 }
 
 Patient MaxHeap::peek() {
+    if (heap.empty()) {
+        cout << "Heap is empty." << endl;
+        return Patient();
+    }
+
     return heap[0];
 }
 
