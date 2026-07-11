@@ -29,6 +29,8 @@ add_executable(Main
         src/Patient.cpp
         src/UIface.cpp
         src/UIface.h
+        src/Heap.h
+        src/Heap.cpp
         # your main file
         # add your own header files below - should be automatically added in CLion
         # example (can also separate with newlines):
