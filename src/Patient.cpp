@@ -176,8 +176,18 @@ char Patient::getSex() {
         this->bmi = (this->weight/ pow(this->height,2)) * 703;
     }
 
-    void Patient::calcRiskScore() {
-    }
+void Patient::calcRiskScore() {
+
+    double score = 0.0;
+    score += falls * 15.0;
+    score += medCount * 3.0;
+    score += riskyMedUse ? 10.0 : 0.0;
+    score += (tugTime > 13.5) ? (tugTime - 13.5) * 5.0 : 0.0;
+    score += (100.0 - mobilityScore) * 0.3;
+    score += (age > 75) ? (age - 75) * 0.5 : 0.0;
+    this->riskScore = score;
+
+}
 
     void Patient::calcRiskLevel() {
         if (riskScore >= 100)
