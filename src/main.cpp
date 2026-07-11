@@ -49,7 +49,6 @@ int main() {
             // inStream >> ufid;
             // //tree.insert(name, ufid);
             run.addPro();
-            cout << "Record inserted!" <<endl;
         }
 
         else if (command == "3") {

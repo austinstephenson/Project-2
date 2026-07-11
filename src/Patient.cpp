@@ -195,7 +195,13 @@ char Patient::getSex() {
     }
 
     bool Patient::isHighRisk() {
+
+        if (this->riskScore >= 100) {
+            cout << "SEVERE risk Patient" << endl;
+            return true;
+        }
         if (this->riskScore >= 50) {
+            cout << "High risk Patient" << endl;
             return true;
         }
         return false;
@@ -204,13 +210,14 @@ char Patient::getSex() {
     //displays
     void Patient::displayPatient() {
 
+        this->isHighRisk();
         cout << "ID: " << this->id << endl;
         cout << "Name: " << this->lastname<<", " << this->firstname << endl;
         cout << "Age: " << this->age << endl;
         cout << "Sex: " << this->sex << endl;
         cout << "Height: " << this->height << endl;
         cout << "Weight: " << this->weight << endl;
-        cout << "BMI: " << this->bmi;
+        cout << "BMI: " << this->bmi <<endl;
         cout << "Falls: " << this->falls << endl;
         cout << "MedCount: " << this->medCount << endl;
         cout << "Use of Risky Medication: " << this->riskyMedUse << endl;
