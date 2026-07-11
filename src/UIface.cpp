@@ -157,8 +157,6 @@ void UIface::sID() {
 
     //time for Hash search
     start =high_resolution_clock::now();
-
-
     p= table.search(idcode);
     if (p == nullptr) {
         cout << "Patient not found." << endl;
@@ -170,12 +168,13 @@ void UIface::sID() {
     cout << "Heap method" << endl;
     start = high_resolution_clock::now();
     //LOGIC FOR HEAP SEARCH
-
+    maxHeap.searchId(idcode);
 
 
     executiontime();
+    cout << endl;
 
-    cout<< "Patient found!" << endl;
+    cout<< "Patient found!" << endl <<endl;
     p->displayPatient();
 
 }
@@ -301,8 +300,11 @@ void UIface::removePro() {
     else {
         cout << "Removal failed." << endl;
     }
+    executiontime();
+
 
     //Heap id removal time
+    start =high_resolution_clock::now();
     if (maxHeap.removeId(idcode)) {
         cout << "Patient removed successfully from Heap." << endl;
     }
@@ -314,6 +316,12 @@ void UIface::removePro() {
 }
 
 void UIface::topX() {
+
+    cout << "Hashtable method"<<endl;
+
+
+
+
 }
 
 void UIface::saveToFile() {
