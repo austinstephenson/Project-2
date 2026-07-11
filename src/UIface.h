@@ -28,7 +28,7 @@ class UIface {
     void sID();
     void updatePro();
     void removePro();
-    void topX();
+    void topXx();
     void saveToFile();
     void exitOP();
 

@@ -5,6 +5,7 @@
 #include "UIface.h"
 
 #include <chrono>
+#include "Compare.h"
 
 #include "Patient.h"
 #include <string>
@@ -315,13 +316,35 @@ void UIface::removePro() {
 
 }
 
-void UIface::topX() {
+void UIface::topXx() {
 
+    vector<Patient> resHash;
+    vector<Patient> resHeap;
+
+    string input;
+    cout << "How many patients do you wish to display: " << endl;
+
+    getline(cin, input);
+    int x = stoi(input);
     cout << "Hashtable method"<<endl;
 
+    start =high_resolution_clock::now();
 
 
+    ///
+    ///resHash = topX(table, x);
 
+    executiontime();
+
+    cout << "Heap method"<<endl;
+    start = high_resolution_clock::now();
+    //
+//    resHeap = topX(maxHeap, x);
+    executiontime();
+
+    for (auto it = resHeap.begin(); it != resHeap.end(); ++it) {
+        it->displayPatient();
+    }
 }
 
 void UIface::saveToFile() {

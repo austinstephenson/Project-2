@@ -57,7 +57,7 @@ int main() {
         }
 
         else if (command == "6") {
-            run.topX();
+            run.topXx();
         }
 
         else if (command == "7") {
