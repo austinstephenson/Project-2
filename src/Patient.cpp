@@ -138,8 +138,8 @@ char Patient::getSex() {
     }
 
     void Patient::setHeight(double newHeight) {
-    this ->height = newHeight;
-}
+        this ->height = newHeight;
+    }
     void Patient::setWeight(double newWeight) {
         this->weight = newWeight;
     }
@@ -169,8 +169,7 @@ char Patient::getSex() {
     }
 
     void Patient::setRiskLevel(string newRiskLevel) {
-        calcRiskLevel();
-        return;
+        this->riskLevel = newRiskLevel;
     }
 
     //calc -short for calculations
@@ -179,27 +178,16 @@ char Patient::getSex() {
         this->bmi = (this->weight/ pow(this->height,2)) * 703;
     }
 
-void Patient::calcRiskScore(){
-    double score = 0.0;
-    score += falls * 15.0;
-    score += medCount * 3.0;
-    score += riskyMedUse ? 10.0 : 0.0;
-    score += (tugTime > 13.5) ? (tugTime - 13.5) * 5.0 : 0.0;
-    score += (100.0 - mobilityScore) * 0.3;
-    score += (age > 75) ? (age - 75) * 0.5 : 0.0;
-    this->riskScore = score;
-}
-
     void Patient::calcRiskLevel() {
-        if (riskScore >= 100)
-            riskLevel = "SEVERE";
-        else if (riskScore >= 50)
+        if (riskScore >= 70.0) {
             riskLevel = "High";
-
-        else if (riskScore >= 25)
+        }
+        else if (riskScore >= 40.0) {
             riskLevel = "Moderate";
-        else
+        }
+        else {
             riskLevel = "Low";
+        }
     }
 
     void Patient::updateProfile() {
