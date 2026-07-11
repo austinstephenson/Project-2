@@ -210,7 +210,7 @@ char Patient::getSex() {
         cout << "Sex: " << this->sex << endl;
         cout << "Height: " << this->height << endl;
         cout << "Weight: " << this->weight << endl;
-        cout << "BMI: " << this->bmi;
+        cout << "BMI: " << this->bmi << endl;
         cout << "Falls: " << this->falls << endl;
         cout << "MedCount: " << this->medCount << endl;
         cout << "Use of Risky Medication: " << this->riskyMedUse << endl;

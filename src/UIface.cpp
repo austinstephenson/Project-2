@@ -50,6 +50,21 @@ void UIface::addPro() {
 }
 
 void UIface::sID() {
+
+
+    string idcode;
+    cout << "Enter Identification Number: ";
+    getline(cin, idcode);
+
+    Patient* p= nullptr;
+    p= table.search(idcode);
+    if (p == nullptr) {
+        cout << "Patient not found." << endl;
+        return;
+    }
+    cout<< "Patient found!" << endl;
+    p->displayPatient();
+
 }
 
 void UIface::updatePro() {
