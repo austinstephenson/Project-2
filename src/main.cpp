@@ -39,47 +39,21 @@ int main() {
         }
         else if(command == "2") {
 
-            //USE SIMILAR METHOD FOR IMPLEMENTING NEW RECORD
-            // string name;
-            // string ufid;
-            //
-            // getline(inStream, name, '"');
-            // getline(inStream, name, '"');
-            //
-            // inStream >> ufid;
-            // //tree.insert(name, ufid);
             run.addPro();
         }
 
         else if (command == "3") {
-            //Similar to ID Search
-            // string arg;
-            //
-            // inStream >> ws;
-            //
-            // if (inStream.peek() == '"') {
-            //     getline(inStream, arg, '"');
-            //     getline(inStream, arg, '"');
-            // } else {
-            //     inStream >> arg;
-            // }
-
-            // tree.search(arg);
             run.sID();
         }
         else if (command == "4") {
 
             run.updatePro();
-            cout << "Patient record updated!" << endl;
-            //Update information
         }
 
         else if (command == "5") {
-            //Similar to Patient Remove
-            // string ufid;
-            // inStream >> ufid;
-            // tree.remove(ufid);
+
             run.removePro();
+
         }
 
 
@@ -95,7 +69,6 @@ int main() {
         else if (command == "7") {
             //Save data to file
             run.saveToFile();
-            cout << "Patient data saved to file!" << endl;
         }
         else if (command == "8") {
 

@@ -35,15 +35,11 @@ void UIface::load() {
     getline(cin, filename);
 
     if (table.loadCSV(filename))
-        cout << "Load successful.\n";
+        cout << "Hash Load successful.\n";
     else
         cout << "Unable to open file.\n";
 
-
-
-
-
-
+    if (
 
 }
 
@@ -238,7 +234,7 @@ void UIface::updatePro() {
             p->setTugTime (stod(input));
         }
         else if (input == "9") {
-            cout << "Update Complete" << endl;
+            cout << "Update Complete!" << endl;
             curupdate = false;
         }
         else {

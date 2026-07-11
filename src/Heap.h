@@ -6,6 +6,11 @@
 
 
 #pragma once
+#include <algorithm>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
 #include "Patient.h"
 using namespace std;
 
