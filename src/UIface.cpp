@@ -154,6 +154,97 @@ void UIface::sID() {
 }
 
 void UIface::updatePro() {
+
+
+    string idcode;
+    cout << "Enter Identification Number of Patient to update: ";
+    getline(cin, idcode);
+
+    Patient* p= nullptr;
+    p= table.search(idcode);
+    if (p == nullptr) {
+        cout << "Patient not found." << endl;
+        return;
+    }
+
+    bool curupdate = true;
+    while (curupdate == true) {
+
+        string input;
+
+        cout <<"Please select a field to update: " << endl;
+        cout << "1: age" << endl;
+        cout << "2: height" << endl;
+        cout << "3: weight" << endl;
+        cout << "4: add a fall" << endl;
+        cout << "5: amount of medications" << endl;
+        cout << "6: risky medication usage" << endl;
+        cout << "7: Tug-time" << endl;
+        cout << "8: mobility-score" << endl;
+        cout << "9: Finish Updating" << endl;
+
+        getline(cin, input);
+
+        if (input == "1") {
+            cout << "Enter Patient's age: "<< endl;
+            getline(cin, input);
+            p->setAge(stoi(input));
+
+        }
+        else if (input == "2") {
+            cout << "Enter Patient's height: "<< endl;
+            getline(cin, input);
+            p->setHeight(stod(input));
+
+        }
+        else if (input == "3") {
+            cout << "Enter Patient's weight: "<< endl;
+            getline(cin, input);
+            p->setWeight(stod(input));
+        }
+        else if (input == "4") {
+            p->addFall();
+            cout << "Fall added." << endl;
+
+        }
+        else if (input == "5") {
+            cout << "Enter new amount of medication: "<< endl;
+            getline(cin, input);
+            p->setMedCount(stoi(input));
+        }
+        else if (input == "6") {
+            cout << "Does patient have history of risky medication use? Y/N";
+            getline(cin, input);
+
+            if (input == "Y") {
+                p->setRiskyMedUse(1);
+            }
+            else {
+                p->setRiskyMedUse(0);
+            }
+
+        }
+        else if (input == "7") {
+            cout << "Enter new Tug-time: "<< endl;
+            getline(cin, input);
+            p->setTugTime (stod(input));
+        }
+        else if (input == "8") {
+            cout << "Enter new Mobility Score: "<< endl;
+            getline(cin, input);
+            p->setTugTime (stod(input));
+        }
+        else if (input == "9") {
+            cout << "Update Complete" << endl;
+            curupdate = false;
+        }
+        else {
+            cout << "UNKNOWN COMMAND: TRY AGAIN" << endl;
+        }
+    }
+
+
+
 }
 
 void UIface::removePro() {
@@ -175,6 +266,5 @@ void UIface::saveToFile() {
     else
         cout << "Unable to save file.\n";
 }
-
 void UIface::exitOP() {
 }

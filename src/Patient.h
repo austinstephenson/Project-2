@@ -77,6 +77,7 @@ private:
     void setLastName(string newName);
     void setFirstName(string newName);
     void setAge(int newAge);
+    void setHeight(double newHeight);
     void setWeight(double newWeight);
     void addFall();
     void setMedCount(int newMedCount);

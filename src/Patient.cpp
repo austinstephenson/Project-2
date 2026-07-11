@@ -137,6 +137,9 @@ char Patient::getSex() {
         this->age = newAge;
     }
 
+    void Patient::setHeight(double newHeight) {
+    this ->height = newHeight;
+}
     void Patient::setWeight(double newWeight) {
         this->weight = newWeight;
     }
